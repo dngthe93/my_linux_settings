@@ -1,0 +1,1 @@
+alias clearall='clear && clear'
