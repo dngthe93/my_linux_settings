@@ -33,9 +33,13 @@ def main():
 
 
     # tmux setting
-    p = subprocess.run(['tmux', '-V'], stdout=subprocess.PIPE)
-    tmux_ver = float(p.stdout.decode('utf-8').strip().split()[1])
-    print(tmux_ver)
+    try:
+        p = subprocess.run(['tmux', '-V'], stdout=subprocess.PIPE)
+        tmux_ver = float(p.stdout.decode('utf-8').strip().split()[1])
+        print(tmux_ver)
+    except FileNotFoundError:
+        print("[ ] tmux not found")
+        tmux_ver = 0.0
 
     if tmux_ver >= 2.9:
         tmuxconf = pw_dir + '/.tmux.conf'
