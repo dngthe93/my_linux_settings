@@ -5,6 +5,7 @@ import pwd
 import os
 import argparse
 import subprocess
+import re
 
 def main():
     parser = argparse.ArgumentParser()
@@ -35,7 +36,9 @@ def main():
     # tmux setting
     try:
         p = subprocess.run(['tmux', '-V'], stdout=subprocess.PIPE)
-        tmux_ver = float(p.stdout.decode('utf-8').strip().split()[1])
+        ver_string = p.stdout.decode('utf-8').strip().split()[1]
+        ver_string = re.findall('\d+\.?\d?', ver_string)[0]
+        tmux_ver = float(ver_string)
         print(tmux_ver)
     except FileNotFoundError:
         print("[ ] tmux not found")
