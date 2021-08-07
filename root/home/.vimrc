@@ -11,3 +11,9 @@ syntax on
 
 
 colorscheme desert
+
+" Enable mouse in Visual mode
+set mouse=v
+
+" Windows Terminal needs sgr option
+set ttymouse=sgr
