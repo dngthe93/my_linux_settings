@@ -16,3 +16,9 @@
 	st = status
 	sw = switch
 	dfc = diff --cached
+
+[include]
+	path = ~/catppuccin.gitconfig
+
+[delta]
+	features = catppuccin-mocha1

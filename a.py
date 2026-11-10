@@ -5,8 +5,11 @@ import pwd
 import os
 import subprocess
 import re
+import shutil
 
 def main():
+    if shutil.which('batcat') is None:
+        raise SystemExit("[!] batcat not found. Run 'sudo apt install bat' and then run this script again.")
 
     uid = os.getuid()
     pw = pwd.getpwuid(uid)
@@ -24,6 +27,10 @@ def main():
         print(command)
         os.system(command)
 
+    # bat theme cache
+    command = pw_dir + '/.local/bin/bat cache --build'
+    print(command)
+    os.system(command)
 
     # tmux setting
     try:
