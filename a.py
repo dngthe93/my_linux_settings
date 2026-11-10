@@ -50,7 +50,11 @@ def main():
         print(command)
         os.system(command)
 
-    
+    if tmux_ver < 3.8:
+        tmuxconf = pw_dir + '/.tmux.conf'
+        command = 'sed -i -e "s/dim=50%/bg=colour236,fg=default/g" -e "s/dim=0%/bg=default,fg=default/g" ' + tmuxconf
+        print(command)
+        os.system(command)
 
 
 if __name__ == '__main__':
