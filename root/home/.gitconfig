@@ -1,0 +1,18 @@
+[user]
+	name = Donghyeok Kim
+	email = dngthe93@gmail.com
+[alias]
+	ad = add
+	br = branch
+	cm = commit
+	cp = cherry-pick
+	df = diff
+	gr = grep
+	lg = log
+	rb = rebase
+	rs = reset
+	rt = restore
+	sh = show
+	st = status
+	sw = switch
+	dfc = diff --cached
