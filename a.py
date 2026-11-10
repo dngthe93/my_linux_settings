@@ -37,20 +37,20 @@ def main():
     try:
         p = subprocess.run(['tmux', '-V'], stdout=subprocess.PIPE)
         ver_string = p.stdout.decode('utf-8').strip().split()[1]
-        ver_string = re.findall('\d+\.?\d?', ver_string)[0]
-        tmux_ver = float(ver_string)
+        ver_string = re.findall(r'\d+\.\d+', ver_string)[0]
+        tmux_ver = tuple(map(int, ver_string.split('.')))
         print(tmux_ver)
     except FileNotFoundError:
         print("[ ] tmux not found")
-        tmux_ver = 0.0
+        tmux_ver = (0, 0)
 
-    if tmux_ver >= 2.9:
+    if tmux_ver >= (2, 9):
         tmuxconf = pw_dir + '/.tmux.conf'
         command = 'sed -i "s/window-status-current-bg red/window-status-current-style bg=red/g" ' + tmuxconf
         print(command)
         os.system(command)
 
-    if tmux_ver < 3.8:
+    if tmux_ver < (3, 8):
         tmuxconf = pw_dir + '/.tmux.conf'
         command = 'sed -i -e "s/dim=50%/bg=colour236,fg=default/g" -e "s/dim=0%/bg=default,fg=default/g" ' + tmuxconf
         print(command)
