@@ -3,20 +3,12 @@
 
 import pwd
 import os
-import argparse
 import subprocess
 import re
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-u', '--uid', type=int, help='uid of the user. default: current uid')
-    args = parser.parse_args()
 
-    uid = args.uid
-    if uid is None:
-        uid = os.getuid()
-
-
+    uid = os.getuid()
     pw = pwd.getpwuid(uid)
     pw_dir = pw.pw_dir
 
